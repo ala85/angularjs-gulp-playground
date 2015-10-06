@@ -1,0 +1,32 @@
+{
+  "name": "gulp-playground",
+  "description": "This repo is meant to be used as playground for gulp tasks",
+  "version": "0.0.1",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ala85/gulp-playground.git"
+  },
+  "keywords": [
+    "gulp",
+    "ember",
+    "playground"
+  ],
+  "author": "Ala85",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ala85/gulp-playground/issues"
+  },
+  "devDependencies": {
+    "gulp": "~3.9.0",
+    "gulp-jshint": "~1.11.2",
+    "gulp-util": "~3.0.6",
+    "gulp-concat": "~2.6.0",
+    "gulp-minify-css": "~1.2.1",
+    "gulp-less": "~3.0.3",
+    "gulp-sourcemaps": "~1.6.0"
+  }
+}
