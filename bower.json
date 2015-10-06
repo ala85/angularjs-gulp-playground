@@ -1,0 +1,17 @@
+{
+  "name": "gulp-playground",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ala85/gulp-playground",
+  "authors": [
+    "Antonio Lagrotteria <lagrotteri@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

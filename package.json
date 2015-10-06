@@ -1,5 +1,5 @@
 {
-  "name": "gulp-playground",
+  "name": "angular-gulp-playground",
   "description": "This repo is meant to be used as playground for gulp tasks",
   "version": "0.0.1",
   "main": "gulpfile.js",
@@ -12,7 +12,7 @@
   },
   "keywords": [
     "gulp",
-    "ember",
+    "angular",
     "playground"
   ],
   "author": "Ala85",
@@ -27,6 +27,12 @@
     "gulp-concat": "~2.6.0",
     "gulp-minify-css": "~1.2.1",
     "gulp-less": "~3.0.3",
-    "gulp-sourcemaps": "~1.6.0"
+    "gulp-sourcemaps": "~1.6.0",
+    "vinyl-source-stream": "~1.1.0",
+    "browserify": "~11.2.0",
+    "gulp-bower": "0.0.10"
+  },
+  "dependencies": {
+    "angular": "~1.4.7"
   }
 }

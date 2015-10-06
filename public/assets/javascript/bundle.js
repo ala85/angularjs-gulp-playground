@@ -1,1 +1,0 @@
-var test=function(){var t="test";return t},test=function(){var t="test";return t};
