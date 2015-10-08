@@ -12,7 +12,9 @@ var gulp       = require('gulp'),
     connect    = require('gulp-connect'),
     browserify = require('browserify'),
     bower      = require('gulp-bower'),
-    source     = require('vinyl-source-stream');
+    source     = require('vinyl-source-stream'),
+    buffer = require('vinyl-buffer'),
+    mainBowerFiles = require('main-bower-files');
 
 
 var config = {
@@ -20,7 +22,7 @@ var config = {
         jsSourceFolder : "source/javascript",
         lessSourceFolder : "less",
         publicAssetsFolder : "public/assets",
-        bowerDir : "./bower_components"
+        bowerDir : "bower_components"
     };
 
 
@@ -51,6 +53,7 @@ gulp.task('build-js', function() {
         .pipe(gulp.dest(config.publicAssetsFolder + '/javascript'));
 });
 
+
 // Transform less file into css and write it into the public folder
 gulp.task('less', function(){
     return gulp.src(config.lessSourceFolder + '/**/*.less')
@@ -62,22 +65,31 @@ gulp.task('less', function(){
         .pipe(gulp.dest(config.publicAssetsFolder + '/stylesheets'));
 });
 
-//Bundles app.js content into a single main.js file
+//Bundles app.js content into a single minified main.js file
 gulp.task('browserify', function() {
     // Grabs the app.js file
     return browserify(config.appFolder + '/app.js')
         // bundles it and creates a file called main.js
         .bundle()
-        .pipe(source('main.js'))
 
+        .pipe(source('main.js'))
+        .pipe(buffer())
+        .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
         // saves it the public/js/ directory
         .pipe(gulp.dest(config.publicAssetsFolder + '/javascript/'));
 });
 
 
-gulp.task('bower', function () {
-   return bower()
-       .pipe(gulp.dest(config.bowerDir));
+gulp.task('libs', function() {
+    // mainBowerFiles is used as a src for the task,
+    // usually you pipe stuff through a task
+    return gulp.src(mainBowerFiles())
+        // Then pipe it to wanted directory, I use
+        .pipe(concat('libs.js'))
+        // dist/lib but it could be anything really
+        .pipe(buffer())
+        .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
+        .pipe(gulp.dest(config.publicAssetsFolder + '/libs'))
 });
 
 // Watch for changes to javascript files
@@ -91,4 +103,4 @@ gulp.task('watch', function() {
 // define the default task and add the watch task to it
 gulp.task('default', ['build']) // development
 
-gulp.task('build', ['bower', 'less', 'browserify', 'watch', 'connect']) // build for production
+gulp.task('build', ['libs', 'less', 'browserify', 'watch', 'connect']) // build for production

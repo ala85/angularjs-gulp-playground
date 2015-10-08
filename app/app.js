@@ -1,5 +1,7 @@
-require('angular')
-var MainController = require('./controllers/MainController')
+require('angular');
 
-var app = angular.module('app', [])
-app.controller('MainController', ['$scope', MainController])
+require('./services');
+require('./controllers');
+
+
+angular.module('app', ['controllers', 'services']);

@@ -1,5 +1,5 @@
 {
-  "name": "gulp-playground",
+  "name": "angularjs-gulp-playground",
   "version": "0.0.1",
   "homepage": "https://github.com/ala85/gulp-playground",
   "authors": [
@@ -13,5 +13,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular-resource": "~1.4.7",
+    "angular-ui-router": "~0.2.15"
+  }
 }
