@@ -1,7 +1,10 @@
 require('angular');
 
+
 require('./services');
 require('./controllers');
+require('angular-resource')
 
+angular.module('app', ['ngResource', 'ui.router', 'ui.bootstrap', 'controllers', 'services']);
 
-angular.module('app', ['controllers', 'services']);
+require('./router');

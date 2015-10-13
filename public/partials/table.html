@@ -1,0 +1,37 @@
+
+
+<div class="jumbotron text-center">
+    <h1>The Table Page</h1>
+    <p>This page demonstrates Angular Paged table</p>
+
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" ng-controller="PostController">
+
+        <table class="table table-striped" data-sort-name="name" data-sort-order="desc">
+            <thead>
+            <tr>
+                <th>UserId</th>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Body</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ui-sortable ng-repeat="post in filteredPosts">
+                <td >{{post.userId}}</td>
+                <td >{{post.id}}</td>
+                <td >{{post.title}}</td>
+                <td >{{post.body}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <uib-pagination
+            ng-model="config.currentPage"
+            total-items="posts.length"
+            max-size="config.maxSize"
+            boundary-links="true">
+        </uib-pagination>
+
+    </div>
+
+
+</div>
